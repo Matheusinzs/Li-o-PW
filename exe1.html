@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 1</title>
+    <style>
+        body {
+            background-color: rgb(53, 53, 53);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 50%;
+            font-size: 20px;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 15px;
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const matriz = [[], [], []];
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                matriz[i][j] = parseFloat(prompt(`Digite o valor para a posição [${i}][${j}]:`));
+            }
+        }
+
+        let soma = 0;
+        matriz.forEach(linha => {
+            linha.forEach(valor => {
+                soma += valor;
+            });
+        });
+
+        document.write("<h3>Tabela de Numeros:</h3><table>");
+        matriz.forEach(linha => {
+            document.write("<tr>");
+            linha.forEach(valor => {
+                document.write(`<td>${valor}</td>`);
+            });
+            document.write("</tr>");
+        });
+        document.write("</table>");
+        document.write(`<h4>Soma de todos os números: ${soma}</h4>`);
+    </script>
+</body>
+</html>

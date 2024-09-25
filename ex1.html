@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="desing.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Insira os valores do array 3x3</h1>
+    <pre id="result"></pre>
+    <script>
+
+// Função para criar e preencher o array 3x3 com valores via prompt
+function createAndFillArray() {
+    const array = [];
+    for (let i = 0; i < 3; i++) {
+        const row = [];
+        for (let j = 0; j < 3; j++) {
+            const value = parseFloat(prompt(`Insira o valor para a posição [${i}][${j}]:`));
+            row.push(isNaN(value) ? 0 : value);
+        }
+        array.push(row);
+    }
+    return array;
+}
+
+
+function displayArrayAndSum(array) {
+    let resultText = 'Tabela de valores:\n';
+
+    let sum = 0;
+
+    array.forEach((row, rowIndex) => {
+        row.forEach((value, colIndex) => {
+            resultText += `Posição [${rowIndex}][${colIndex}]: ${value}\n`;
+            sum += value;
+        });
+    });
+
+    resultText += `\nSoma de todos os números: ${sum}`;
+    return resultText;
+}
+
+
+function main() {
+    const array = createAndFillArray();
+    const resultText = displayArrayAndSum(array);
+
+   
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = resultText;
+}
+
+
+main();
+
+    
+    
+    </script>
+</body>
+</html>

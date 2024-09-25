@@ -1,0 +1,19 @@
+body {
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+script{
+    font-family: fantasy;
+    font-size: larger;
+}
+label{
+font-size: larger;
+
+
+}
+input{
+    font-size: larger;
+}

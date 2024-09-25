@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="desing.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>01
+    <h1>Insira os valores do array 3x3</h1>
+    <form id="arrayForm">
+        <div id="inputFields">
+           
+        </div>
+        <label for="multiplier">Multiplicador:</label>
+        <input type="number" id="multiplier" required>
+        <button type="submit">Submeter</button>
+    </form>
+    <h2>Resultado:</h2>
+    <pre id="result"></pre>
+    <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputFieldsDiv = document.getElementById('inputFields');
+
+   
+    function createArrayInputs() {
+        let html = '';
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                html += `<label for="input-${i}-${j}">Elemento [${i}][${j}]:</label>
+                         <input type="number" id="input-${i}-${j}" required><br>`;
+            }
+        }
+        inputFieldsDiv.innerHTML = html;
+    }
+
+    createArrayInputs();
+
+    function getArrayValues() {
+        const array = [];
+        for (let i = 0; i < 3; i++) {
+            const row = [];
+            for (let j = 0; j < 3; j++) {
+                const input = document.getElementById(`input-${i}-${j}`);
+                row.push(Number(input.value));
+            }
+            array.push(row);
+        }
+        return array;
+    }
+
+    function multiplyArray(array, multiplier) {
+        return array.map(row => row.map(value => value * multiplier));
+    }
+
+  
+    document.getElementById('arrayForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const array = getArrayValues();
+        const multiplier = Number(document.getElementById('multiplier').value);
+
+        const resultArray = multiplyArray(array, multiplier);
+        document.getElementById('result').textContent = JSON.stringify(resultArray, null, 2);
+    });
+});
+
+    </script>
+</body>
+</html>

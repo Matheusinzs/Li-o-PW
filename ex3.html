@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="desing.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 3x3 com Prompt</title>
+</head>
+<body>
+    <h1>Insira os valores do array 3x3</h1>
+    <pre id="result"></pre>
+
+    <script >
+     
+function createAndFillArray() {
+    const array = [];
+    for (let i = 0; i < 3; i++) {
+        const row = [];
+        for (let j = 0; j < 3; j++) {
+            const value = parseFloat(prompt(`Insira o valor para a posição [${i}][${j}]:`));
+            row.push(value);
+        }
+        array.push(row);
+    }
+    return array;
+}
+
+
+function findMaxValue(array) {
+    let max = -Infinity;
+    array.forEach(row => {
+        row.forEach(value => {
+            if (value > max) {
+                max = value;
+            }
+        });
+    });
+    return max;
+}
+
+
+function main() {
+    const array = createAndFillArray();
+    const maxValue = findMaxValue(array);
+
+    
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = `Array 3x3:\n${JSON.stringify(array, null, 2)}\n\nMaior valor: ${maxValue}`;
+}
+
+
+main();
+
+    </script>
+</body>
+</html>

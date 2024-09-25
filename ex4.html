@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="desing.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 3x3 com Tipos</title>
+</head>
+<body>
+    <h1>Insira os valores do array 3x3</h1>
+    <pre id="result"></pre>
+
+    <script >
+
+function createAndFillArray() {
+    const array = [];
+    for (let i = 0; i < 3; i++) {
+        const row = [];
+        for (let j = 0; j < 3; j++) {
+            const value = prompt(`Insira o valor para a posição [${i}][${j}] (pode ser número ou texto):`);
+            row.push(value);
+        }
+        array.push(row);
+    }
+    return array;
+}
+
+
+function displayArrayAndTypes(array) {
+    let resultText = 'Valores e tipos no array 3x3:\n';
+
+    array.forEach((row, rowIndex) => {
+        row.forEach((value, colIndex) => {
+            const type = typeof value;
+            resultText += `Posição [${rowIndex}][${colIndex}]: ${value} (${type})\n`;
+        });
+    });
+
+    return resultText;
+}
+
+
+function main() {
+    const array = createAndFillArray();
+    const resultText = displayArrayAndTypes(array);
+
+  
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = resultText;
+}
+
+
+main();
+
+
+    </script>
+</body>
+</html>
